@@ -65,7 +65,7 @@ function App() {
 	return (
 		<Router>
 			<div>
-				<Navbar />
+				<Navbar cartItems={cartItems} />
 
 				<Routes>
 					<Route path="/" element={<Home cards={cards} />} />

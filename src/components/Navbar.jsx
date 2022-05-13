@@ -1,4 +1,4 @@
-const Navbar = () => {
+const Navbar = ({cartItems}) => {
 	return (
 		<>
 			<header className="border-b border-gray-100">
@@ -64,7 +64,7 @@ const Navbar = () => {
 								<span>
 									<a
 										href="/cart"
-										className="block p-6 border-b-4 border-transparent hover:border-red-700"
+										className="block p-6 border-b-4 border-transparent hover:border-red-700 flex justify-center items-center gap-1"
 									>
 										<svg
 											className="w-4 h-4"
@@ -80,8 +80,9 @@ const Navbar = () => {
 												d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
 											/>
 										</svg>
-
-										<span className="sr-only">Cart</span>
+										<span className="text-white bg-red-700 px-2 rounded-full">
+											{cartItems.length}
+										</span>
 									</a>
 								</span>
 
