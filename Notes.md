@@ -1,0 +1,2 @@
+-   No Context or Reduceres used yet.
+-   Prop Drilling observed in Home page for 'cards' state.
