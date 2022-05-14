@@ -2,14 +2,14 @@ import CartItem from "../components/CartItem";
 import { useGlobalContext } from "../context";
 
 const Cart = () => {
-	const { cart, clearItems, subTotal } = useGlobalContext();
+	const { cart, clearCart, subTotal } = useGlobalContext();
 	return (
 		<>
 			<ul className="mb-12 px-12 flex flex-col items-center justify-center">
 				{cart.length > 0 && (
 					<button
 						className="bg-red-700 text-white px-3 py-2 rounded-lg place-self-end mx-36 mt-6"
-						onClick={clearItems}
+						onClick={clearCart}
 					>
 						Clear Items
 					</button>
@@ -26,7 +26,8 @@ const Cart = () => {
 			</ul>
 			{cart.length > 0 && (
 				<h2 className="text-center text-3xl mb-10 font-extrabold italic">
-					SubTotal: <span className="text-red-700">${subTotal.toFixed(2)}</span>
+					SubTotal:{" "}
+					<span className="text-red-700">${subTotal.toFixed(2)}</span>
 				</h2>
 			)}
 		</>

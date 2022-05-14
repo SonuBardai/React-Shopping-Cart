@@ -1,5 +1,4 @@
--   Context API used.
--   No Reduceres used yet.
+-   Context API and Reducers used.
 
 -   Running REACT build without a server:
     -   Inside package.json add: "homepage": "."

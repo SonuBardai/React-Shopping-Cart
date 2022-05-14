@@ -41,7 +41,7 @@ const Navbar = () => {
 								About
 							</Link>
 
-							<Link
+							{/* <Link
 								to="/news"
 								className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
 							>
@@ -60,7 +60,7 @@ const Navbar = () => {
 								className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
 							>
 								Contact
-							</Link>
+							</Link> */}
 						</nav>
 
 						<div className="flex items-center ml-8">
@@ -90,7 +90,7 @@ const Navbar = () => {
 									</Link>
 								</span>
 
-								<span>
+								{/* <span>
 									<Link
 										to="/account"
 										className="block p-6 border-b-4 border-transparent hover:border-red-700"
@@ -142,7 +142,7 @@ const Navbar = () => {
 											Search{" "}
 										</span>
 									</Link>
-								</span>
+								</span> */}
 							</div>
 						</div>
 					</div>

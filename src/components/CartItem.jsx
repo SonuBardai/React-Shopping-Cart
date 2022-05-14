@@ -1,7 +1,9 @@
 import { useGlobalContext } from "../context";
 
+import { AiFillDelete } from "react-icons/ai";
+
 const CartItem = ({ id, name, amount, size, color, price, total, image }) => {
-	const { incrementItem, decrementItem } = useGlobalContext();
+	const { incrementItem, decrementItem, removeItem } = useGlobalContext();
 	return (
 		<>
 			<li className="flex items-center justify-between py-4 h-[170px] w-[700px] rounded-lg px-12 my-10 shadow-lg shadow-gray-400">
@@ -25,12 +27,13 @@ const CartItem = ({ id, name, amount, size, color, price, total, image }) => {
 								<div className="inline">Sizes: {size}</div>
 							</div>
 							<div>
-								<div className="inline">${price} each</div>
+								<div className="inline">
+									${price.toFixed(2)} each
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 				<div>
 					<div className="my-2 flex flex-col items-center justify-center">
 						<button
@@ -46,8 +49,14 @@ const CartItem = ({ id, name, amount, size, color, price, total, image }) => {
 						>
 							-
 						</button>
+						<AiFillDelete
+							className="cursor-pointer text-red-700 my-1"
+							onClick={() => removeItem(id)}
+						/>
 					</div>
-					<p className="text-lg font-bold italic">${total}</p>
+					<p className="text-lg font-bold italic">
+						${total.toFixed(2)}
+					</p>
 				</div>
 			</li>
 		</>

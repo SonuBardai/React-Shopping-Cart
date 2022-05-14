@@ -1,84 +1,42 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { data } from "./data";
+import { reducer } from "./reducer";
 
 export const AppContext = createContext();
 
 export const StoreProvider = ({ children }) => {
-	const [cart, setCart] = useState(data.cartItems);
-
-	const getTotal = () => {
-		let temp = 0;
-		for (let i = 0; i < cart.length; i++) {
-			temp += cart[i].amount;
-		}
-		return temp;
+	const initialState = {
+		cart: data.cartItems,
+		quantity: 0,
+		subTotal: 0,
+		cards: data.cards,
 	};
 
-	const [quantity, setQuantity] = useState(getTotal());
-
-	const getSubTotal = () => {
-		let temp = 0;
-		for (let i = 0; i < cart.length; i++) {
-			temp += cart[i].total;
-		}
-		return temp;
-	};
-
-	const [subTotal, setSubTotal] = useState(getSubTotal());
+	const [state, dispatch] = useReducer(reducer, initialState);
 
 	useEffect(() => {
-		setQuantity(getTotal());
-		setSubTotal(getSubTotal());
-	}, [cart]);
+		dispatch({ type: "GET_TOTAL" });
+	}, [state.cart]);
 
-	useEffect(() => {
-		const tempCart = cart.filter((item) => item.amount);
-		setCart(tempCart);
-	}, [cart]);
-
-	const clearItems = () => {
-		setCart([]);
+	const clearCart = () => {
+		dispatch({ type: "CLEAR_CART" });
 	};
 
 	const incrementItem = (id) => {
-		setCart(
-			cart.map((item) => {
-				if (item.id === id) {
-					item.amount++;
-					item.total = item.price * item.amount;
-				}
-				return item;
-			})
-		);
+		dispatch({ type: "INCREMENT_ITEM", payload: id });
 	};
 
 	const decrementItem = (id) => {
-		setCart(
-			cart.map((item) => {
-				if (item.id === id) {
-					item.amount--;
-					item.total = item.price * item.amount;
-					if (item.amount <= 0) {
-						item.amount = 0;
-					}
-				}
-				return item;
-			})
-		);
+		dispatch({ type: "DECREMENT_ITEM", payload: id });
+	};
+
+	const removeItem = (id) => {
+		dispatch({ type: "REMOVE_ITEM", payload: id });
 	};
 
 	return (
 		<AppContext.Provider
-			value={{
-				cards: data.cards,
-				quantity,
-				getTotal,
-				subTotal,
-				cart,
-				clearItems,
-				incrementItem,
-				decrementItem,
-			}}
+			value={{ ...state, clearCart, incrementItem, decrementItem, removeItem }}
 		>
 			{children}
 		</AppContext.Provider>
