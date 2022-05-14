@@ -1,6 +1,8 @@
+import { useGlobalContext } from "../context";
 import Card from "./Card";
 
-const Cards = ({cards}) => {
+const Cards = () => {
+	const { cards } = useGlobalContext();
 	return (
 		<div className="my-16">
 			<strong className="text-center mb-10 text-4xl font-extrabold text-red-700 sm:block">

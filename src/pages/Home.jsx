@@ -1,11 +1,13 @@
 import Cards from "../components/Cards";
 import Hero from "../components/Hero";
 
-const Home = ({cards}) => {
-    return ( <>
-    <Hero />
-    <Cards cards={cards} />
-    </> );
-}
- 
+const Home = () => {
+	return (
+		<>
+			<Hero />
+			<Cards />
+		</>
+	);
+};
+
 export default Home;

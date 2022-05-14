@@ -1,4 +1,8 @@
-const Navbar = ({cartItems}) => {
+import { Link } from "react-router-dom";
+import { useGlobalContext } from "../context";
+
+const Navbar = () => {
+	const { quantity } = useGlobalContext();
 	return (
 		<>
 			<header className="border-b border-gray-100">
@@ -21,49 +25,49 @@ const Navbar = ({cartItems}) => {
 							</svg>
 						</button>
 
-						<a href="/" className="flex">
+						<Link to="/" className="flex">
 							<span className="inline-block w-32 h-10 bg-red-700 rounded-lg text-lg font-extrabold flex justify-center items-center text-white ">
 								OurShop.com
 							</span>
-						</a>
+						</Link>
 					</div>
 
 					<div className="flex items-center justify-end flex-1">
 						<nav className="hidden lg:uppercase lg:text-gray-500 lg:tracking-wide lg:font-bold lg:text-xs lg:space-x-4 lg:flex">
-							<a
-								href="/about"
+							<Link
+								to="/about"
 								className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
 							>
 								About
-							</a>
+							</Link>
 
-							<a
-								href="/news"
+							<Link
+								to="/news"
 								className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
 							>
 								News
-							</a>
+							</Link>
 
-							<a
-								href="/products"
+							<Link
+								to="/products"
 								className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
 							>
 								Products
-							</a>
+							</Link>
 
-							<a
-								href="/contact"
+							<Link
+								to="/contact"
 								className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
 							>
 								Contact
-							</a>
+							</Link>
 						</nav>
 
 						<div className="flex items-center ml-8">
 							<div className="flex items-center border-gray-100 divide-x divide-gray-100 border-x">
 								<span>
-									<a
-										href="/cart"
+									<Link
+										to="/cart"
 										className="block p-6 border-b-4 border-transparent hover:border-red-700 flex justify-center items-center gap-1"
 									>
 										<svg
@@ -81,14 +85,14 @@ const Navbar = ({cartItems}) => {
 											/>
 										</svg>
 										<span className="text-white bg-red-700 px-2 rounded-full">
-											{cartItems.length}
+											{quantity}
 										</span>
-									</a>
+									</Link>
 								</span>
 
 								<span>
-									<a
-										href="/account"
+									<Link
+										to="/account"
 										className="block p-6 border-b-4 border-transparent hover:border-red-700"
 									>
 										<svg
@@ -110,12 +114,12 @@ const Navbar = ({cartItems}) => {
 											{" "}
 											Account{" "}
 										</span>
-									</a>
+									</Link>
 								</span>
 
 								<span className="hidden sm:block">
-									<a
-										href="/search"
+									<Link
+										to="/search"
 										className="block p-6 border-b-4 border-transparent hover:border-red-700"
 									>
 										<svg
@@ -137,7 +141,7 @@ const Navbar = ({cartItems}) => {
 											{" "}
 											Search{" "}
 										</span>
-									</a>
+									</Link>
 								</span>
 							</div>
 						</div>
